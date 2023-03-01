@@ -25,7 +25,7 @@ import javax.swing.Icon;
 
 import com.intellij.icons.AllIcons;
 import com.intellij.ui.LayeredIcon;
-import com.yujunyang.intellij.plugin.sonar.resources.ResourcesLoader;
+import com.github.intellij.plugin.sonar.resources.ResourcesLoader;
 
 public interface PluginIcons {
     Icon LOGO = ResourcesLoader.loadIcon("logo.svg");

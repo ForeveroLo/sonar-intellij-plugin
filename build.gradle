@@ -5,8 +5,8 @@ plugins {
 apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
-group 'com.yujunyang'
-version '0.2.2'
+group 'com.github'
+version '0.2.4'
 
 sourceCompatibility = 1.8
 
@@ -29,6 +29,8 @@ dependencies {
     implementation group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.14.9'
     implementation group: 'org.sonarsource.scanner.api', name: 'sonar-scanner-api', version: '2.16.1.361'
     implementation group: 'org.sonarsource.sonarqube', name: 'sonar-scanner-protocol', version: '7.9.6'
+    implementation group: 'org.apache.maven', name: 'maven-model', version: '3.8.1'
+
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
@@ -36,7 +38,7 @@ intellij {
      version '2019.3.1'
 //    version '2021.3.1'
 
-    pluginName 'sonar-intellij-plugin'
+    pluginName 'jlc-sonar-intellij-plugin'
 
     plugins = ['java', 'Git4Idea']
 

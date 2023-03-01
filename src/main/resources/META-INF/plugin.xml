@@ -1,5 +1,5 @@
 <idea-plugin url="https://github.com/lowkeyfish/sonar-intellij-plugin">
-    <id>com.yujunyang.intellij.plugin.sonar</id>
+    <id>com.github.intellij.plugin.sonar</id>
     <name>SonarAnalyzer</name>
     <vendor email="hnyujunyang@163.com" url="https://github.com/lowkeyfish">Yu Junyang</vendor>
 
@@ -67,29 +67,29 @@
     <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.yujunyang.intellij.plugin.sonar.config.WorkspaceSettings"/>
-        <projectService serviceImplementation="com.yujunyang.intellij.plugin.sonar.config.ProjectSettings"/>
+        <applicationService serviceImplementation="com.github.intellij.plugin.sonar.config.WorkspaceSettings"/>
+        <projectService serviceImplementation="com.github.intellij.plugin.sonar.config.ProjectSettings"/>
         <toolWindow
                 icon="PluginIcons.LOGO_13X13"
-                factoryClass="com.yujunyang.intellij.plugin.sonar.extensions.ToolWindowFactoryImpl"
+                factoryClass="com.github.intellij.plugin.sonar.extensions.ToolWindowFactoryImpl"
                 id="SonarAnalyzer"
                 anchor="bottom"
         />
-        <projectService serviceImplementation="com.yujunyang.intellij.plugin.sonar.service.ProblemCacheService"/>
-        <projectService serviceImplementation="com.yujunyang.intellij.plugin.sonar.service.GitService"/>
-        <projectService serviceImplementation="com.yujunyang.intellij.plugin.sonar.service.ProjectCloseListener"/>
+        <projectService serviceImplementation="com.github.intellij.plugin.sonar.service.ProblemCacheService"/>
+        <projectService serviceImplementation="com.github.intellij.plugin.sonar.service.GitService"/>
+        <projectService serviceImplementation="com.github.intellij.plugin.sonar.service.ProjectCloseListener"/>
         <externalAnnotator language="JAVA"
-                           implementationClass="com.yujunyang.intellij.plugin.sonar.extensions.SonarIssueExternalAnnotator"/>
+                           implementationClass="com.github.intellij.plugin.sonar.extensions.SonarIssueExternalAnnotator"/>
         <externalAnnotator language="XML"
-                           implementationClass="com.yujunyang.intellij.plugin.sonar.extensions.SonarIssueExternalAnnotator"/>
+                           implementationClass="com.github.intellij.plugin.sonar.extensions.SonarIssueExternalAnnotator"/>
         <codeInsight.lineMarkerProvider language="JAVA"
-                                        implementationClass="com.yujunyang.intellij.plugin.sonar.extensions.SonarIssueLineMarkerProvider"/>
+                                        implementationClass="com.github.intellij.plugin.sonar.extensions.SonarIssueLineMarkerProvider"/>
         <codeInsight.lineMarkerProvider language="XML"
-                                        implementationClass="com.yujunyang.intellij.plugin.sonar.extensions.SonarIssueLineMarkerProvider"/>
-        <applicationConfigurable parentId="tools" id="com.yujunyang.intellij.plugin.sonar.extensions.ApplicationSettingsConfigurable"
-                instance="com.yujunyang.intellij.plugin.sonar.extensions.ApplicationSettingsConfigurable"/>
-        <projectConfigurable parentId="com.yujunyang.intellij.plugin.sonar.extensions.ApplicationSettingsConfigurable"
-                instance="com.yujunyang.intellij.plugin.sonar.extensions.ProjectSettingsConfigurable"
+                                        implementationClass="com.github.intellij.plugin.sonar.extensions.SonarIssueLineMarkerProvider"/>
+        <applicationConfigurable parentId="tools" id="com.github.intellij.plugin.sonar.extensions.ApplicationSettingsConfigurable"
+                instance="com.github.intellij.plugin.sonar.extensions.ApplicationSettingsConfigurable"/>
+        <projectConfigurable parentId="com.github.intellij.plugin.sonar.extensions.ApplicationSettingsConfigurable"
+                instance="com.github.intellij.plugin.sonar.extensions.ProjectSettingsConfigurable"
                              nonDefaultProject="true"
         />
     </extensions>
@@ -99,49 +99,49 @@
             <add-to-group anchor="last" group-id="AnalyzeMenu"/>
             <add-to-group anchor="after" group-id="EditorPopupMenu" relative-to-action="AnalyzeMenu"/>
             <add-to-group anchor="after" group-id="ProjectViewPopupMenu" relative-to-action="AnalyzeMenu"/>
-            <action class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzeSelectedFiles"
+            <action class="com.github.intellij.plugin.sonar.actions.AnalyzeSelectedFiles"
                     id="SonarAnalyzer.AnalyzeSelectedFiles"></action>
 
-            <action class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzeOpenFiles"
+            <action class="com.github.intellij.plugin.sonar.actions.AnalyzeOpenFiles"
                     id="SonarAnalyzer.AnalyzeOpenFiles" icon="PluginIcons.ANALYZE_OPEN_FILES_ICON"></action>
-            <action class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzeChangelistFiles"
+            <action class="com.github.intellij.plugin.sonar.actions.AnalyzeChangelistFiles"
                     id="SonarAnalyzer.AnalyzeChangelistFiles" icon="PluginIcons.ANALYZE_CHANGELIST_FILES_ICON"></action>
-            <action class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzePackageFiles"
+            <action class="com.github.intellij.plugin.sonar.actions.AnalyzePackageFiles"
                     id="SonarAnalyzer.AnalyzePackageFiles" icon="PluginIcons.ANALYZE_PACKAGE_FILES_ICON"></action>
-            <action class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzeModuleFilesNotIncludingTests"
+            <action class="com.github.intellij.plugin.sonar.actions.AnalyzeModuleFilesNotIncludingTests"
                     id="SonarAnalyzer.AnalyzeModuleFilesNotIncludingTests" icon="PluginIcons.ANALYZE_MODULE_FILES_NOT_INCLUDING_TESTS_ICON"></action>
             <action id="SonarAnalyzer.ProjectFilesNotIncludingTestsAction"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzeProjectFilesNotIncludingTests"
+                    class="com.github.intellij.plugin.sonar.actions.AnalyzeProjectFilesNotIncludingTests"
                     icon="PluginIcons.ANALYZE_PROJECT_FILES_NOT_INCLUDING_TESTS_ICON">
             </action>
         </group>
 
         <group id="SonarAnalyzer.ToolBarActions.left" text="SonarAnalyzer Actions" popup="true">
             <action id="SonarAnalyzer.Start"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.AnalyzeProjectFilesNotIncludingTests"
+                    class="com.github.intellij.plugin.sonar.actions.AnalyzeProjectFilesNotIncludingTests"
                     icon="PluginIcons.ANALYZE_EXECUTE">
             </action>
 
             <separator/>
             <action id="SonarAnalyzer.Setting"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.ShowSettingDialogAction"
+                    class="com.github.intellij.plugin.sonar.actions.ShowSettingDialogAction"
                     icon="PluginIcons.PLUGIN_SETTING">
             </action>
             <action id="SonarAnalyzer.Setting.AutoScrollToSource"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.AutoScrollToSourceAction"
+                    class="com.github.intellij.plugin.sonar.actions.AutoScrollToSourceAction"
                     icon="PluginIcons.PLUGIN_AUTO_SCROLL_TO_SOURCE">
             </action>
             <separator/>
             <action id="SonarAnalyzer.Cancel"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.ClearAndCloseToolWindowAnalyzeAction"
+                    class="com.github.intellij.plugin.sonar.actions.ClearAndCloseToolWindowAnalyzeAction"
                     icon="PluginIcons.ANALYZE_CLEAR">
             </action>
             <action id="SonarAnalyzer.Help"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.ShowHelpAction"
+                    class="com.github.intellij.plugin.sonar.actions.ShowHelpAction"
                     icon="PluginIcons.PLUGIN_HELP">
             </action>
             <action id="SonarAnalyzer.Test"
-                    class="com.yujunyang.intellij.plugin.sonar.actions.TestAction"
+                    class="com.github.intellij.plugin.sonar.actions.TestAction"
                     text="测试"
                     description="测试"
                     icon="PluginIcons.SMILE">
